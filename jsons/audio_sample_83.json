@@ -1,0 +1,20 @@
+[
+    {
+        "start": 0.03096875,
+        "stop": 0.09846875000000001,
+        "speaker": "SPEAKER_00",
+        "transcript": ""
+    },
+    {
+        "start": 0.72284375,
+        "stop": 6.0553437500000005,
+        "speaker": "SPEAKER_00",
+        "transcript": "و"
+    },
+    {
+        "start": 1.65096875,
+        "stop": 2.1234687500000002,
+        "speaker": "SPEAKER_01",
+        "transcript": ""
+    }
+]

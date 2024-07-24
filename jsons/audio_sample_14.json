@@ -1,0 +1,32 @@
+[
+    {
+        "start": 0.03096875,
+        "stop": 2.07284375,
+        "speaker": "SPEAKER_00",
+        "transcript": "ا"
+    },
+    {
+        "start": 2.52846875,
+        "stop": 7.59096875,
+        "speaker": "SPEAKER_00",
+        "transcript": "و"
+    },
+    {
+        "start": 7.64159375,
+        "stop": 8.164718750000002,
+        "speaker": "SPEAKER_01",
+        "transcript": ""
+    },
+    {
+        "start": 7.709093750000001,
+        "stop": 7.72596875,
+        "speaker": "SPEAKER_00",
+        "transcript": ""
+    },
+    {
+        "start": 7.82721875,
+        "stop": 9.970343750000001,
+        "speaker": "SPEAKER_00",
+        "transcript": "ا"
+    }
+]

@@ -1,0 +1,68 @@
+[
+    {
+        "start": 0.03096875,
+        "stop": 0.047843750000000004,
+        "speaker": "SPEAKER_03",
+        "transcript": ""
+    },
+    {
+        "start": 0.16596875,
+        "stop": 2.0559687500000003,
+        "speaker": "SPEAKER_03",
+        "transcript": "ا"
+    },
+    {
+        "start": 2.0559687500000003,
+        "stop": 4.72221875,
+        "speaker": "SPEAKER_00",
+        "transcript": "ا"
+    },
+    {
+        "start": 4.72221875,
+        "stop": 5.228468750000001,
+        "speaker": "SPEAKER_02",
+        "transcript": ""
+    },
+    {
+        "start": 5.228468750000001,
+        "stop": 20.972843750000003,
+        "speaker": "SPEAKER_00",
+        "transcript": "و"
+    },
+    {
+        "start": 5.24534375,
+        "stop": 5.464718750000001,
+        "speaker": "SPEAKER_02",
+        "transcript": ""
+    },
+    {
+        "start": 6.79784375,
+        "stop": 7.03409375,
+        "speaker": "SPEAKER_02",
+        "transcript": ""
+    },
+    {
+        "start": 7.03409375,
+        "stop": 7.54034375,
+        "speaker": "SPEAKER_01",
+        "transcript": ""
+    },
+    {
+        "start": 7.54034375,
+        "stop": 8.51909375,
+        "speaker": "SPEAKER_02",
+        "transcript": ""
+    },
+    {
+        "start": 9.548468750000001,
+        "stop": 9.68346875,
+        "speaker": "SPEAKER_02",
+        "transcript": ""
+    },
+    {
+        "start": 9.68346875,
+        "stop": 10.51034375,
+        "speaker": "SPEAKER_01",
+        "transcript": ""
+    }
+]
