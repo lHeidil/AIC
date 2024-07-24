@@ -66,6 +66,7 @@ Transcripts are generated using the ASR model. Timestamps from the diarization m
 ## Testing the System
 
 To test or run the system, please execute the `diarization.ipynb` notebook. This notebook includes code to perform speaker diarization and interact with the ASR model, demonstrating how to process audio files and obtain results.
+You can download the model weights from [here](https://drive.google.com/file/d/12nvGIfatV_kDHaFHy571TqBYkcGxNV3M/view?usp=sharing)
 
 ## Conclusion
 
