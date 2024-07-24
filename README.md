@@ -63,6 +63,10 @@ Audio is divided into smaller sub-files, each corresponding to a segment where a
 
 Transcripts are generated using the ASR model. Timestamps from the diarization model are used to align transcripts with corresponding audio segments, ensuring accurate matching between spoken words and the speaker.
 
+## Testing the System
+
+To test or run the system, please execute the `diarization.ipynb` notebook. This notebook includes code to perform speaker diarization and interact with the ASR model, demonstrating how to process audio files and obtain results.
+
 ## Conclusion
 
 The integration of ASR and speaker diarization models aimed to provide a structured and accurate breakdown of the audio content. However, while the speaker diarization effectively segmented the audio into speaker-specific segments, the ASR model's text results have not met the desired accuracy. The alignment of transcripts with audio segments showed promise but revealed areas for improvement in transcription quality. Ongoing efforts will focus on enhancing the ASR model’s performance and refining the overall system to better handle the complexities of Egyptian Arabic speech.
