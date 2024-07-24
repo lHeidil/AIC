@@ -1,25 +1,35 @@
 # Mind-Cloud-AIC
-Automatic Speech Recognition (ASR) System for Egyptian Arabic
+Automatic Speech Recognition (ASR) and Speaker Diarization System for Egyptian Arabic
 
 ## Dataset
 
-The dataset comprises 50,715 audio files in the `/train/` folder and 2,199 audio files in the `/adapt/` folder. Each audio file is a single-channel 16-bit PCM WAV with a sample rate of 16,000 Hz. The corresponding transcripts are provided in the `train.csv` file with the following fields:
+The dataset comprises an extensive collection of 50,715 audio files for training and 2,199 audio files for validation. Each audio file is a single-channel 16-bit PCM WAV with a sample rate of 16,000 Hz. The corresponding transcripts are provided in the `train.csv` file with the following fields:
 
 - **audio**: The name of the corresponding `.wav` file.
 - **Transcription**: The words spoken by the reader.
 
 ## Preprocessing
 
-We prepared the vocabulary consisting of 38 characters, including the space and the OOV (out-of-vocabulary) token. The following transformations were applied to the data:
+We prepared a comprehensive vocabulary consisting of 38 characters, including variations and out-of-vocabulary (OOV) tokens. The following transformations were applied to the data:
 
-- **Spectrogram Generation**: Spectrograms were obtained using Short-Time Fourier Transform (STFT) with a frame length of 240 (15 ms), frame step of 120, and FFT length of 256.
+- **Spectrogram Generation**: Spectrograms were generated using Short-Time Fourier Transform (STFT) with a frame length of 240 (15 ms), frame step of 120, and FFT length of 256.
 - **Normalization**: Spectrograms were normalized.
-- **Label Encoding**: Labels were split and encoded.
-- **Batching**: A batch size of 32 was chosen.
+- **Label Encoding**: Labels were split and encoded to match the prepared vocabulary.
+- **Batching**: A batch size of 32 was used.
 
 ![Example of the Spectrogram](https://github.com/Yahia-Ibrahim/mind-cloud-AIC/assets/120991373/5f83164f-89a3-4375-8392-1ae68542d696)
 
-## Model Architecture
+## Speaker Diarization Model
+
+Speaker diarization partitions audio into segments based on speaker identity. We used the `pyannote/speaker-diarization-3.1` model for this purpose. The diarization process involves:
+
+- **Feature Extraction**: Acoustic features are extracted from the audio signal.
+- **Speech Activity Detection**: Segments of speech are identified and separated from non-speech elements.
+- **Speaker Change Detection**: Transitions between speakers are detected.
+- **Speech Turn Representation**: Speaker turns are represented and grouped.
+- **Clustering**: Speaker embeddings are clustered to segment the audio into speaker-specific chunks.
+
+## ASR Model Architecture
 
 ### Input Layer
 - Accepts spectrogram inputs of shape `(None, input_dim)`.
@@ -32,7 +42,7 @@ We prepared the vocabulary consisting of 38 characters, including the space and 
 - Reshapes the output from the convolutional layers to a 2D tensor for the RNN layers.
 
 ### RNN Layers
-- **Bidirectional GRU Layers**: Five layers, each with 768 units, to capture temporal dependencies. Each GRU layer uses `tanh` activation and `sigmoid` recurrent activation. Outputs from forward and backward GRU cells are concatenated.
+- **Bidirectional GRU Layers**: Five layers, each with 768 units, using `tanh` activation and `sigmoid` recurrent activation. Outputs from forward and backward GRU cells are concatenated.
 
 ### Dense Layer
 - A fully connected layer with `2 * rnn_units` units followed by ReLU activation.
@@ -40,18 +50,25 @@ We prepared the vocabulary consisting of 38 characters, including the space and 
 ### Output Layer
 - A dense layer with `output_dim + 1` units and a softmax activation function to predict character probabilities.
 
-## Compilation
+### Compilation
 
 - **Optimizer**: Adam optimizer.
 - **Loss Function**: Connectionist Temporal Classification (CTC) Loss.
 
-## Summary
+## Segmentation
 
-This model leverages Convolutional Neural Networks (CNNs) for feature extraction and Recurrent Neural Networks (RNNs) for sequence modeling, making it well-suited for end-to-end speech recognition tasks. The architecture ensures effective learning of both local and temporal features from spectrogram inputs.
+Audio is divided into smaller sub-files, each corresponding to a segment where a single speaker is talking. This is achieved using timestamps provided by the diarization model.
 
-You can download the model weights from [here](https://drive.google.com/file/d/1kW7POZ_S4dI9ixqYswXXqOGkFQzKi1WI/view?usp=drive_link).
+## Transcript Matching
 
-## References 
+Transcripts are generated using the ASR model. Timestamps from the diarization model are used to align transcripts with corresponding audio segments, ensuring accurate matching between spoken words and the speaker.
 
-- [Automatic Speech Recognition using CTC](https://keras.io/examples/audio/ctc_asr/)
-- [Multi-Dialect Arabic Speech Recognition](https://arxiv.org/pdf/2112.14678)
+## Conclusion
+
+The combination of ASR and speaker diarization models provided a detailed and accurate breakdown of the audio content. Each segment was attributed to the correct speaker, and the corresponding transcripts were aligned, facilitating comprehensive analysis and improving the clarity of speaker identification and dialogue attribution.
+
+## References
+
+1. Abbas Raza Ali, "Multi-Dialect Arabic Speech Recognition," Faculty of Science and Technology, Bournemouth University, Poole BH12 5BB, United Kingdom, email: abbas.raza.ali@gmail.com.
+2. Mohamed Reda Bouadjenek and Ngoc Dung Huynh, "Automatic Speech Recognition using CTC," Date created: 2021/09/26, Last modified: 2021/09/26, Description: Training a CTC-based model for automatic speech recognition.
+3. pyannote, "pyannote-audio," GitHub repository, 2024. [Online]. Available: [https://github.com/pyannote/pyannote-audio](https://github.com/pyannote/pyannote-audio).
