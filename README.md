@@ -65,7 +65,7 @@ Transcripts are generated using the ASR model. Timestamps from the diarization m
 
 ## Conclusion
 
-The combination of ASR and speaker diarization models provided a detailed and accurate breakdown of the audio content. Each segment was attributed to the correct speaker, and the corresponding transcripts were aligned, facilitating comprehensive analysis and improving the clarity of speaker identification and dialogue attribution.
+The integration of ASR and speaker diarization models aimed to provide a structured and accurate breakdown of the audio content. However, while the speaker diarization effectively segmented the audio into speaker-specific segments, the ASR model's text results have not met the desired accuracy. The alignment of transcripts with audio segments showed promise but revealed areas for improvement in transcription quality. Ongoing efforts will focus on enhancing the ASR model’s performance and refining the overall system to better handle the complexities of Egyptian Arabic speech.
 
 ## References
 
